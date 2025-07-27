@@ -6,7 +6,7 @@ export const Skills: React.FC = () => {
     <div className={styles.skillsBox}>
       <h2>💻 Skills</h2>
       <p>
-        <strong>Languages:</strong> JavaScript, HTML, CSS
+        <strong>Languages:</strong> JavaScript, Typescript, HTML, CSS
       </p>
       <p>
         <strong>Database:</strong> MongoDB, NoSQL
