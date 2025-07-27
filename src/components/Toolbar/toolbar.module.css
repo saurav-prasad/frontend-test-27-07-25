@@ -1,0 +1,44 @@
+.toolbar {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #2b77e7;
+    /* A dark, professional color */
+    color: white;
+    padding: 12px 25px;
+    border-radius: 50px;
+    /* Pill shape for modern look */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    z-index: 1000;
+    pointer-events: none;
+    /* Prevents it from blocking clicks on content behind it */
+    animation: slideUpFadeIn 0.6s ease-out forwards;
+    font-weight: 500;
+}
+
+/* Animation for the toolbar appearing */
+@keyframes slideUpFadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+/* A simple CSS down-arrow icon */
+.arrow {
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 4px;
+    transform: rotate(45deg);
+}

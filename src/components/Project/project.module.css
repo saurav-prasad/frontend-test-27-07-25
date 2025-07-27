@@ -1,0 +1,44 @@
+.projectsBox {
+    background-color: #3b82f6;
+    color: white;
+    padding: 20px 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.projectsBox h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.projectEntry {
+    margin-bottom: 12px;
+}
+
+.projectEntry:last-child {
+    margin-bottom: 0;
+}
+
+.projectTitle {
+    margin: 0 0 5px 0;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.projectTitle span {
+    font-weight: normal;
+    font-style: italic;
+    font-size: 0.9em;
+    opacity: 0.9;
+    margin-left: 8px;
+}
+
+.techStack {
+    margin: 0;
+    font-size: 0.9em;
+    line-height: 1.4;
+    opacity: 0.95;
+}

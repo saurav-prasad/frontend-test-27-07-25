@@ -1,0 +1,21 @@
+.educationBox {
+    background-color: #3b82f6;
+    color: white;
+    padding: 20px 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.educationBox h2 {
+    margin-top: 0;
+}
+
+.educationBox p {
+    margin: 5px 0;
+}
+
+.date {
+    font-style: italic;
+    opacity: 0.9;
+}
