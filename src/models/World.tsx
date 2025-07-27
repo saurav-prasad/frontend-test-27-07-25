@@ -3,6 +3,25 @@ import { useGLTF } from "@react-three/drei";
 import { a } from "@react-spring/three";
 import worldScene from "../assets/3d/ship_in_clouds.glb";
 import { useFrame, useThree } from "@react-three/fiber";
+import * as THREE from "three";
+
+// Define the GLTF structure for better TypeScript support
+interface GLTFResult {
+  nodes: {
+    Boot_Finaal_1_Boot_Finaal_0: THREE.Mesh;
+    Cloud_Poly_Poly_0: THREE.Mesh;
+    Cloud_1_Cloud_1_0: THREE.Mesh;
+    Cloud_2_Cloud_2_0: THREE.Mesh;
+    Cloud_3_Cloud_3_0: THREE.Mesh;
+  };
+  materials: {
+    Boot_Finaal: THREE.Material;
+    Poly: THREE.Material;
+    Cloud_1: THREE.Material;
+    Cloud_2: THREE.Material;
+    Cloud_3: THREE.Material;
+  };
+}
 
 export function World({
   setCurrentStage,
@@ -12,9 +31,9 @@ export function World({
   setCurrentStage: React.Dispatch<React.SetStateAction<number>>;
   setHasScrolled: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
-  const { nodes, materials } = useGLTF(worldScene);
+  const { nodes, materials } = useGLTF(worldScene) as unknown as GLTFResult;
   const { gl } = useThree();
-  const worldRef = useRef<any>(null);
+  const worldRef = useRef<THREE.Group>(null);
   const rotationSpeed = useRef(0);
   let dampingFactor = 0.955;
   const [isRotating, setIsRotating] = useState(false);
@@ -25,12 +44,16 @@ export function World({
   const handleKeyDown = (e: KeyboardEvent) => {
     if (e.key === "ArrowLeft") {
       if (!isRotating) setIsRotating(true);
-      worldRef.current.rotation.y += 0.009 * Math.PI;
-      rotationSpeed.current = 0.0125;
+      if (worldRef.current) {
+        worldRef.current.rotation.y += 0.009 * Math.PI;
+        rotationSpeed.current = 0.0125;
+      }
     } else if (e.key === "ArrowRight") {
       if (!isRotating) setIsRotating(true);
-      worldRef.current.rotation.y -= 0.009 * Math.PI;
-      rotationSpeed.current = -0.0125;
+      if (worldRef.current) {
+        worldRef.current.rotation.y -= 0.009 * Math.PI;
+        rotationSpeed.current = -0.0125;
+      }
     }
   };
 
@@ -38,7 +61,7 @@ export function World({
 
   useFrame(() => {
     // Only handle rotation animation, no stage changes here
-    if (!isRotating) {
+    if (!isRotating && worldRef.current) {
       rotationSpeed.current *= dampingFactor;
       if (Math.abs(rotationSpeed.current) < 0.001) {
         rotationSpeed.current = 0;
@@ -78,7 +101,7 @@ export function World({
         const zoomAmount = e.deltaY * 0.08;
         const newZ = worldRef.current.position.z + zoomAmount;
 
-        // Clamp Z position to stay in range [-50, 1600]
+        // Clamp Z position to stay in range [-30, 1600]
         worldRef.current.position.z = Math.min(Math.max(newZ, -30), 1600);
 
         // Update stage based on new zoom position
