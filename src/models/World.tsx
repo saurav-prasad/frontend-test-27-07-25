@@ -13,7 +13,7 @@ export function World({
   setHasScrolled: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const { nodes, materials } = useGLTF(worldScene);
-  const { gl, viewport } = useThree();
+  const { gl } = useThree();
   const worldRef = useRef<any>(null);
   const rotationSpeed = useRef(0);
   let dampingFactor = 0.955;

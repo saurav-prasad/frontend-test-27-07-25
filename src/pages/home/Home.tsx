@@ -19,11 +19,7 @@ const Home = () => {
       <Canvas camera={{ position: [0, 0, 20], near: 0.1, far: 1000 }}>
         <ambientLight intensity={1} />
         <directionalLight position={[1, 1, 1]} intensity={0.85} />
-        <hemisphereLight
-          skyColor="#b1e1ff"
-          groundColor="#000000"
-          intensity={1.1}
-        />
+        <hemisphereLight groundColor="#000000" intensity={1.1} />
 
         <World
           setHasScrolled={setHasScrolled}
