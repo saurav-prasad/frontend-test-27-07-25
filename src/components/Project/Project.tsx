@@ -1,18 +1,6 @@
 import React from "react";
 import styles from "./project.module.css";
 
-// Define the shape of a single project's data
-interface ProjectInfo {
-  emoji: string;
-  title: string;
-  subtitle: string;
-  techStack: string;
-}
-
-// Define the props for the component
-interface ProjectsProps {
-  projects: ProjectInfo[];
-}
 const projects = [
   {
     emoji: "🎨",
